@@ -24,9 +24,11 @@ class MyHomePage extends GetView<HomeController> {
             children: [
               TextFormField(
                 controller: controller.titlecontroller,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.grey[200],
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.zero)),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
                   hintText: 'Add text',
                 ),
               ),
@@ -36,9 +38,16 @@ class MyHomePage extends GetView<HomeController> {
                       shrinkWrap: true,
                       itemCount: controller.addtext.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return ListTile(
-                          leading: Text('${index + 1}'),
-                          title: Text(controller.addtext[index]),
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ListTile(
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(color: Colors.black, width: 1),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            leading: Text('${index + 1}'),
+                            title: Text(controller.addtext[index]),
+                          ),
                         );
                       },
                     ),
